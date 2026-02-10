@@ -2,7 +2,7 @@
   min-height: 100vh;
   display: flex;
   align-items: center;
-  padding: 5rem 2rem;
+  padding: 6rem 2rem;
   position: relative;
   z-index: 1;
 }
@@ -24,43 +24,159 @@
   background-clip: text;
 }
 
-.about-content {
+/* Card grid layout */
+.about-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: start;
+  gap: 2rem;
 }
 
-.about-text {
-  font-size: 1.2rem;
-  line-height: 1.8;
-  color: rgba(255, 255, 255, 0.8);
+.about-card {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(100, 108, 255, 0.15);
+  border-radius: 20px;
+  padding: 2rem;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 0;
+  transform: translateY(30px);
 }
 
-.about-text p {
-  margin-bottom: 1.5rem;
+.section-visible .about-card {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-.skills h3 {
-  font-size: 1.8rem;
+.section-visible .about-card:nth-child(1) { transition-delay: 0.1s; }
+.section-visible .about-card:nth-child(2) { transition-delay: 0.2s; }
+.section-visible .about-card:nth-child(3) { transition-delay: 0.3s; }
+.section-visible .about-card:nth-child(4) { transition-delay: 0.4s; }
+
+.about-card:hover {
+  border-color: rgba(100, 108, 255, 0.4);
+  box-shadow: 0 20px 50px rgba(100, 108, 255, 0.1);
+  transform: translateY(-5px);
+}
+
+.tools-card {
+  grid-column: 1 / -1;
+}
+
+.card-icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.about-card h3 {
+  font-size: 1.5rem;
   margin-bottom: 1.5rem;
   color: rgba(255, 255, 255, 0.95);
 }
 
+/* Education */
+.education-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.edu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.edu-header h4 {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 600;
+}
+
+.edu-location {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.95rem;
+}
+
+.edu-degree {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.edu-meta {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 0.25rem;
+}
+
+.edu-badge {
+  padding: 0.4rem 1rem;
+  background: linear-gradient(135deg, rgba(100, 108, 255, 0.15), rgba(97, 218, 251, 0.1));
+  border: 1px solid rgba(100, 108, 255, 0.3);
+  border-radius: 20px;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+}
+
+.edu-courses {
+  margin-top: 0.5rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.courses-label {
+  font-size: 0.9rem;
+  color: rgba(100, 108, 255, 0.8);
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+.courses-list {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* Certificates */
+.certificate-item {
+  padding: 1rem;
+  background: rgba(100, 108, 255, 0.05);
+  border-radius: 12px;
+  border: 1px solid rgba(100, 108, 255, 0.1);
+}
+
+.cert-name {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+  margin-bottom: 0.3rem;
+}
+
+.cert-issuer {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.95rem;
+}
+
+/* Skills */
 .skills-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 0.75rem;
 }
 
 .skill-tag {
-  padding: 0.75rem 1.5rem;
-  background: rgba(100, 108, 255, 0.1);
-  border: 1px solid rgba(100, 108, 255, 0.3);
+  padding: 0.55rem 1.2rem;
+  background: rgba(100, 108, 255, 0.08);
+  border: 1px solid rgba(100, 108, 255, 0.25);
   border-radius: 25px;
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.9rem;
   transition: all 0.3s ease;
+  cursor: default;
 }
 
 .skill-tag:hover {
@@ -70,9 +186,27 @@
   box-shadow: 0 5px 15px rgba(100, 108, 255, 0.2);
 }
 
+.language-tag {
+  background: rgba(97, 218, 251, 0.1);
+  border-color: rgba(97, 218, 251, 0.3);
+}
+
+.language-tag:hover {
+  background: rgba(97, 218, 251, 0.2);
+  border-color: #61dafb;
+  box-shadow: 0 5px 15px rgba(97, 218, 251, 0.2);
+}
+
 @media (max-width: 768px) {
-  .about-content {
+  .about-grid {
     grid-template-columns: 1fr;
-    gap: 2rem;
+  }
+
+  .tools-card {
+    grid-column: 1;
+  }
+
+  .edu-header {
+    flex-direction: column;
   }
 }
