@@ -8,7 +8,71 @@ main {
   z-index: 1;
 }
 
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
+section {
+  scroll-margin-top: 64px;
+}
+
+/* ── Shared layout ── */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* ── Shared section header ── */
+.section-header {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin-bottom: 3rem;
+}
+
+.section-tag {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--accent);
+  letter-spacing: 0.06em;
+}
+
+.section-title {
+  font-size: clamp(1.4rem, 3.5vw, 2rem);
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.02em;
+}
+
+/* ── Shared button styles ── */
+.btn {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 0.6rem 1.4rem;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: all 0.15s ease;
+  display: inline-block;
+  cursor: pointer;
+  letter-spacing: 0.02em;
+  border: none;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  border: 1px solid var(--accent);
+}
+.btn-primary:hover {
+  background: #388bfd;
+  border-color: #388bfd;
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--text-muted);
+  border: 1px solid var(--border-muted);
+}
+.btn-outline:hover {
+  color: var(--text);
+  border-color: var(--text-muted);
+  background: var(--bg-surface);
 }

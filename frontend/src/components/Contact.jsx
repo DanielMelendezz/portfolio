@@ -1,6 +1,27 @@
 import { useEffect, useRef } from 'react';
 import './Contact.css';
 
+const IconEmail = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="2" y="4" width="20" height="16" rx="2" />
+    <path d="m2 7 10 7 10-7" />
+  </svg>
+);
+
+const IconPhone = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.07 11a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3 .18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.09 7.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 14.92z" />
+  </svg>
+);
+
+const IconLinkedIn = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+    <rect x="2" y="9" width="4" height="12" />
+    <circle cx="4" cy="4" r="2" />
+  </svg>
+);
+
 const Contact = () => {
   const sectionRef = useRef(null);
 
@@ -8,9 +29,7 @@ const Contact = () => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('section-visible');
-          }
+          if (entry.isIntersecting) entry.target.classList.add('section-visible');
         });
       },
       { threshold: 0.1 }
@@ -22,50 +41,41 @@ const Contact = () => {
   return (
     <section id="contact" className="contact" ref={sectionRef}>
       <div className="container">
-        <h2 className="section-title">Get In Touch</h2>
+        <div className="section-header">
+          <span className="section-tag">// 04</span>
+          <h2 className="section-title">Contact</h2>
+        </div>
         <div className="contact-content">
           <div className="contact-info">
             <p className="contact-text">
-              I'm always open to discussing new projects, creative ideas, or
-              opportunities to be part of your visions. Feel free to reach out!
+              Open to new opportunities, collaborations, and interesting projects.
+              Feel free to reach out — I&apos;ll get back to you promptly.
             </p>
             <div className="contact-links">
               <a href="mailto:melendezdan2003@gmail.com" className="contact-link">
-                <span className="contact-icon">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <rect x="2" y="4" width="20" height="16" rx="2" />
-                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-                  </svg>
-                </span>
+                <span className="contact-icon"><IconEmail /></span>
                 melendezdan2003@gmail.com
               </a>
               <a href="tel:+14078486184" className="contact-link">
-                <span className="contact-icon">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
-                  </svg>
-                </span>
+                <span className="contact-icon"><IconPhone /></span>
                 (407) 848-6184
               </a>
               <a href="https://www.linkedin.com/in/danielmelendez0" target="_blank" rel="noopener noreferrer" className="contact-link">
-                <span className="contact-icon">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                  </svg>
-                </span>
-                LinkedIn
+                <span className="contact-icon"><IconLinkedIn /></span>
+                linkedin.com/in/danielmelendez0
               </a>
             </div>
           </div>
+
           <form className="contact-form" onSubmit={(e) => e.preventDefault()}>
             <div className="form-group">
-              <input type="text" placeholder="Your Name" className="form-input" />
+              <input type="text" placeholder="Name" className="form-input" />
             </div>
             <div className="form-group">
-              <input type="email" placeholder="Your Email" className="form-input" />
+              <input type="email" placeholder="Email" className="form-input" />
             </div>
             <div className="form-group">
-              <textarea placeholder="Your Message" rows="5" className="form-input"></textarea>
+              <textarea placeholder="Message" rows="5" className="form-input" />
             </div>
             <button type="submit" className="btn btn-primary">Send Message</button>
           </form>
